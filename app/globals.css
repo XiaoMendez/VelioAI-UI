@@ -4,87 +4,97 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Velio Theme - Light Blue (trust), Mint Green (safety), White (clarity) */
-  --background: oklch(0.98 0.01 200);
-  --foreground: oklch(0.25 0.02 220);
+  /* Modern Velio Theme - Refined, Premium, Minimalist */
+  --background: oklch(0.985 0.005 220);
+  --foreground: oklch(0.15 0.02 240);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.25 0.02 220);
+  --card-foreground: oklch(0.15 0.02 240);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.25 0.02 220);
-  --primary: oklch(0.65 0.15 200);
+  --popover-foreground: oklch(0.15 0.02 240);
+  --primary: oklch(0.45 0.12 240);
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.85 0.1 165);
-  --secondary-foreground: oklch(0.25 0.02 165);
-  --muted: oklch(0.95 0.02 200);
-  --muted-foreground: oklch(0.45 0.02 220);
-  --accent: oklch(0.75 0.12 165);
-  --accent-foreground: oklch(0.2 0.02 165);
-  --destructive: oklch(0.577 0.245 27.325);
+  --secondary: oklch(0.96 0.01 240);
+  --secondary-foreground: oklch(0.25 0.02 240);
+  --muted: oklch(0.96 0.01 240);
+  --muted-foreground: oklch(0.5 0.02 240);
+  --accent: oklch(0.55 0.18 160);
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.55 0.22 25);
   --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.88 0.03 200);
-  --input: oklch(0.95 0.02 200);
-  --ring: oklch(0.65 0.15 200);
-  --chart-1: oklch(0.65 0.15 200);
-  --chart-2: oklch(0.75 0.12 165);
-  --chart-3: oklch(0.7 0.18 85);
-  --chart-4: oklch(0.6 0.2 30);
-  --chart-5: oklch(0.55 0.15 280);
-  --radius: 0.75rem;
-  --sidebar: oklch(0.25 0.03 220);
-  --sidebar-foreground: oklch(0.95 0.01 200);
-  --sidebar-primary: oklch(0.65 0.15 200);
+  --border: oklch(0.92 0.01 240);
+  --input: oklch(0.96 0.01 240);
+  --ring: oklch(0.45 0.12 240);
+  --chart-1: oklch(0.45 0.12 240);
+  --chart-2: oklch(0.55 0.18 160);
+  --chart-3: oklch(0.7 0.15 85);
+  --chart-4: oklch(0.6 0.18 30);
+  --chart-5: oklch(0.55 0.12 280);
+  --radius: 1rem;
+  --sidebar: oklch(0.12 0.02 240);
+  --sidebar-foreground: oklch(0.96 0.01 240);
+  --sidebar-primary: oklch(0.45 0.12 240);
   --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.35 0.03 220);
-  --sidebar-accent-foreground: oklch(0.95 0.01 200);
-  --sidebar-border: oklch(0.35 0.02 220);
-  --sidebar-ring: oklch(0.65 0.15 200);
+  --sidebar-accent: oklch(0.22 0.02 240);
+  --sidebar-accent-foreground: oklch(0.96 0.01 240);
+  --sidebar-border: oklch(0.22 0.01 240);
+  --sidebar-ring: oklch(0.45 0.12 240);
   
-  /* Custom Velio colors */
-  --velio-blue: oklch(0.65 0.15 200);
-  --velio-mint: oklch(0.75 0.12 165);
-  --velio-light-blue: oklch(0.85 0.08 200);
-  --velio-gold: oklch(0.8 0.15 85);
-  --velio-success: oklch(0.7 0.18 145);
+  /* Velio Brand Colors - Refined */
+  --velio-primary: oklch(0.45 0.12 240);
+  --velio-accent: oklch(0.55 0.18 160);
+  --velio-soft: oklch(0.96 0.02 240);
+  --velio-gold: oklch(0.75 0.14 75);
+  --velio-success: oklch(0.6 0.16 155);
+  --velio-warning: oklch(0.7 0.15 60);
+  --velio-surface: oklch(0.98 0.005 240);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.145 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.145 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.396 0.141 25.723);
-  --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
+  --background: oklch(0.1 0.015 240);
+  --foreground: oklch(0.96 0.01 240);
+  --card: oklch(0.14 0.015 240);
+  --card-foreground: oklch(0.96 0.01 240);
+  --popover: oklch(0.14 0.015 240);
+  --popover-foreground: oklch(0.96 0.01 240);
+  --primary: oklch(0.65 0.15 240);
+  --primary-foreground: oklch(0.1 0.015 240);
+  --secondary: oklch(0.22 0.015 240);
+  --secondary-foreground: oklch(0.96 0.01 240);
+  --muted: oklch(0.22 0.015 240);
+  --muted-foreground: oklch(0.65 0.01 240);
+  --accent: oklch(0.6 0.16 160);
+  --accent-foreground: oklch(0.1 0.015 240);
+  --destructive: oklch(0.45 0.18 25);
+  --destructive-foreground: oklch(0.96 0.01 240);
+  --border: oklch(0.25 0.015 240);
+  --input: oklch(0.22 0.015 240);
+  --ring: oklch(0.65 0.15 240);
+  --chart-1: oklch(0.65 0.15 240);
+  --chart-2: oklch(0.6 0.16 160);
+  --chart-3: oklch(0.75 0.14 75);
+  --chart-4: oklch(0.65 0.18 30);
+  --chart-5: oklch(0.6 0.12 280);
+  --sidebar: oklch(0.12 0.015 240);
+  --sidebar-foreground: oklch(0.96 0.01 240);
+  --sidebar-primary: oklch(0.65 0.15 240);
+  --sidebar-primary-foreground: oklch(0.1 0.015 240);
+  --sidebar-accent: oklch(0.22 0.015 240);
+  --sidebar-accent-foreground: oklch(0.96 0.01 240);
+  --sidebar-border: oklch(0.25 0.015 240);
+  --sidebar-ring: oklch(0.65 0.15 240);
+  
+  --velio-primary: oklch(0.65 0.15 240);
+  --velio-accent: oklch(0.6 0.16 160);
+  --velio-soft: oklch(0.18 0.015 240);
+  --velio-gold: oklch(0.75 0.14 75);
+  --velio-success: oklch(0.6 0.16 155);
+  --velio-warning: oklch(0.7 0.15 60);
+  --velio-surface: oklch(0.14 0.015 240);
 }
 
 @theme inline {
-  --font-sans: 'Nunito', 'Geist', 'Geist Fallback';
-  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --font-sans: 'Nunito', 'Geist', 'Geist Fallback', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback', monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -123,11 +133,13 @@
   --color-sidebar-ring: var(--sidebar-ring);
   
   /* Velio custom colors */
-  --color-velio-blue: var(--velio-blue);
-  --color-velio-mint: var(--velio-mint);
-  --color-velio-light-blue: var(--velio-light-blue);
+  --color-velio-primary: var(--velio-primary);
+  --color-velio-accent: var(--velio-accent);
+  --color-velio-soft: var(--velio-soft);
   --color-velio-gold: var(--velio-gold);
   --color-velio-success: var(--velio-success);
+  --color-velio-warning: var(--velio-warning);
+  --color-velio-surface: var(--velio-surface);
 }
 
 @layer base {
@@ -135,6 +147,87 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+/* Custom Scrollbar */
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Smooth transitions for all interactive elements */
+@layer base {
+  button, a, input, textarea, select {
+    @apply transition-all duration-200 ease-out;
+  }
+}
+
+/* Glass morphism effect */
+@layer utilities {
+  .glass {
+    @apply backdrop-blur-xl bg-card/80 border border-border/50;
+  }
+  .glass-strong {
+    @apply backdrop-blur-2xl bg-card/90 border border-border/60;
+  }
+}
+
+/* Gradient text */
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+  }
+}
+
+/* Subtle shadow */
+@layer utilities {
+  .shadow-soft {
+    box-shadow: 0 2px 20px -4px oklch(0.3 0.02 240 / 0.08);
+  }
+  .shadow-soft-lg {
+    box-shadow: 0 8px 40px -8px oklch(0.3 0.02 240 / 0.12);
+  }
+}
+
+/* Animation keyframes */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes slide-up {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  .animate-pulse-soft {
+    animation: pulse-soft 2s ease-in-out infinite;
+  }
+  .animate-slide-up {
+    animation: slide-up 0.4s ease-out forwards;
+  }
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out forwards;
   }
 }

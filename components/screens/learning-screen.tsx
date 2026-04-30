@@ -107,8 +107,8 @@ export function LearningScreen() {
       {/* Main Grid Layout for Desktop */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Daily Challenge */}
-        <Card className="overflow-hidden border-0 shadow-soft-lg lg:col-span-2">
-          <CardContent className="relative p-5 bg-gradient-to-br from-primary to-accent text-primary-foreground">
+        <Card className="overflow-hidden border-0 shadow-soft-lg lg:col-span-2 bg-gradient-to-br from-primary to-accent">
+          <CardContent className="relative p-5 text-primary-foreground">
             <div className="flex flex-col sm:flex-row sm:items-start gap-4">
               <div className="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center flex-shrink-0">
                 <Flame className="w-7 h-7" />
@@ -142,10 +142,10 @@ export function LearningScreen() {
         </Card>
 
         {/* Game Modes */}
-        <Card className="border-0 shadow-soft bg-card/80 backdrop-blur-sm">
+        <Card className="border border-border/40 shadow-soft bg-card rounded-3xl">
           <CardContent className="p-5">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-2xl bg-primary/10 flex items-center justify-center">
                 <Play className="w-5 h-5 text-primary" />
               </div>
               <div>
@@ -195,10 +195,10 @@ export function LearningScreen() {
         </Card>
 
         {/* Levels */}
-        <Card className="border-0 shadow-soft bg-card/80 backdrop-blur-sm">
+        <Card className="border border-border/40 shadow-soft bg-card rounded-3xl">
           <CardContent className="p-5">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-velio-gold/10 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-2xl bg-velio-gold/10 flex items-center justify-center">
                 <Trophy className="w-5 h-5 text-velio-gold" />
               </div>
               <div>
@@ -250,10 +250,10 @@ export function LearningScreen() {
         </Card>
 
         {/* Rewards */}
-        <Card className="border-0 shadow-soft bg-card/80 backdrop-blur-sm lg:col-span-2">
+        <Card className="border border-border/40 shadow-soft bg-card rounded-3xl lg:col-span-2">
           <CardContent className="p-5">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-2xl bg-accent/10 flex items-center justify-center">
                 <Gift className="w-5 h-5 text-accent" />
               </div>
               <div>
@@ -302,7 +302,7 @@ export function LearningScreen() {
       </div>
 
       {/* Velio Encouragement */}
-      <Card className="border-0 shadow-soft bg-gradient-to-r from-primary/5 to-accent/5">
+      <Card className="border border-border/40 shadow-soft bg-gradient-to-r from-primary/5 to-accent/5 rounded-3xl">
         <CardContent className="p-5 flex items-center gap-4">
           <VelioMascot size="md" mood="encouraging" />
           <div className="flex-1">

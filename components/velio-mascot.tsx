@@ -23,23 +23,6 @@ export function VelioMascot({
   animated = true 
 }: VelioMascotProps) {
   
-  const getExpression = () => {
-    switch (mood) {
-      case "happy":
-        return { eyeType: "happy", mouthType: "smile" }
-      case "thinking":
-        return { eyeType: "curious", mouthType: "neutral" }
-      case "encouraging":
-        return { eyeType: "wink", mouthType: "smile" }
-      case "celebrating":
-        return { eyeType: "happy", mouthType: "open" }
-      default:
-        return { eyeType: "happy", mouthType: "smile" }
-    }
-  }
-
-  const expression = getExpression()
-
   return (
     <div 
       className={cn(
@@ -49,146 +32,90 @@ export function VelioMascot({
         className
       )}
     >
-      <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-lg">
-        {/* Definitions */}
+      <svg 
+        xmlns="http://www.w3.org/2000/svg" 
+        viewBox="0 0 1440 810" 
+        className="w-full h-full drop-shadow-lg"
+        preserveAspectRatio="xMidYMid meet"
+      >
         <defs>
-          {/* Main gradient - soft blue to teal */}
-          <linearGradient id="velioBody" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="var(--primary)" />
-            <stop offset="100%" stopColor="var(--accent)" />
-          </linearGradient>
-          
-          {/* Highlight gradient */}
-          <linearGradient id="velioHighlight" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="white" stopOpacity="0.4" />
-            <stop offset="100%" stopColor="white" stopOpacity="0" />
-          </linearGradient>
-          
-          {/* Shadow */}
-          <filter id="velioShadow" x="-20%" y="-20%" width="140%" height="140%">
-            <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="var(--primary)" floodOpacity="0.2"/>
-          </filter>
+          <clipPath id="velioClip">
+            <path d="M 248.5625 144.621094 C 248.5625 122.550781 266.492188 104.621094 288.5625 104.621094 L 1150.78125 104.621094 C 1172.847656 104.621094 1190.78125 122.550781 1190.78125 144.621094 L 1190.78125 652.59375 C 1190.78125 674.660156 1172.847656 692.59375 1150.78125 692.59375 L 288.5625 692.59375 C 266.492188 692.59375 248.5625 674.660156 248.5625 652.59375 Z M 248.5625 144.621094" />
+          </clipPath>
         </defs>
         
-        {/* Main body - rounded square with smooth corners */}
-        <rect 
-          x="12" y="12" 
-          width="76" height="76" 
-          rx="28" ry="28"
-          fill="url(#velioBody)"
-          filter="url(#velioShadow)"
-        />
-        
-        {/* Inner highlight */}
-        <rect 
-          x="16" y="16" 
-          width="68" height="40" 
-          rx="24" ry="24"
-          fill="url(#velioHighlight)"
-        />
-        
-        {/* Face container */}
-        <g>
-          {/* Eyes */}
-          {expression.eyeType === "happy" && (
-            <>
-              {/* Left eye - happy arc */}
-              <path 
-                d="M32 42 Q37 35 42 42" 
-                stroke="white" 
-                strokeWidth="3.5" 
-                fill="none" 
-                strokeLinecap="round"
-              />
-              {/* Right eye - happy arc */}
-              <path 
-                d="M58 42 Q63 35 68 42" 
-                stroke="white" 
-                strokeWidth="3.5" 
-                fill="none" 
-                strokeLinecap="round"
-              />
-            </>
-          )}
-          
-          {expression.eyeType === "curious" && (
-            <>
-              {/* Left eye - round */}
-              <circle cx="37" cy="40" r="6" fill="white" />
-              <circle cx="38" cy="39" r="2.5" fill="var(--primary)" />
-              {/* Right eye - round */}
-              <circle cx="63" cy="40" r="6" fill="white" />
-              <circle cx="64" cy="39" r="2.5" fill="var(--primary)" />
-            </>
-          )}
-          
-          {expression.eyeType === "wink" && (
-            <>
-              {/* Left eye - wink */}
-              <path 
-                d="M32 42 Q37 35 42 42" 
-                stroke="white" 
-                strokeWidth="3.5" 
-                fill="none" 
-                strokeLinecap="round"
-              />
-              {/* Right eye - open */}
-              <circle cx="63" cy="40" r="6" fill="white" />
-              <circle cx="64" cy="39" r="2.5" fill="var(--primary)" />
-            </>
-          )}
-          
-          {/* Mouth */}
-          {expression.mouthType === "smile" && (
-            <path 
-              d="M38 58 Q50 70 62 58" 
-              stroke="white" 
-              strokeWidth="3" 
-              fill="none" 
-              strokeLinecap="round"
-            />
-          )}
-          
-          {expression.mouthType === "open" && (
-            <ellipse 
-              cx="50" cy="62" 
-              rx="10" ry="8" 
-              fill="white"
-            />
-          )}
-          
-          {expression.mouthType === "neutral" && (
-            <ellipse 
-              cx="50" cy="60" 
-              rx="6" ry="5" 
-              fill="white"
-            />
-          )}
-          
-          {/* Cheek blush */}
-          <circle cx="28" cy="52" r="6" fill="white" opacity="0.25" />
-          <circle cx="72" cy="52" r="6" fill="white" opacity="0.25" />
+        {/* Background gradient */}
+        <g clipPath="url(#velioClip)">
+          <rect x="248" y="104" width="943" height="589" fill="url(#velioBodyGradient)" />
         </g>
+        
+        <defs>
+          <linearGradient id="velioBodyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#3B82F6" />
+            <stop offset="100%" stopColor="#14B8A6" />
+          </linearGradient>
+        </defs>
+        
+        {/* Main rounded rectangle body */}
+        <path 
+          fill="url(#velioBodyGradient)"
+          d="M 248.5625 144.621094 C 248.5625 122.550781 266.492188 104.621094 288.5625 104.621094 L 1150.78125 104.621094 C 1172.847656 104.621094 1190.78125 122.550781 1190.78125 144.621094 L 1190.78125 652.59375 C 1190.78125 674.660156 1172.847656 692.59375 1150.78125 692.59375 L 288.5625 692.59375 C 266.492188 692.59375 248.5625 674.660156 248.5625 652.59375 Z M 248.5625 144.621094"
+        />
+        
+        {/* White decorative elements */}
+        <path 
+          fill="#ffffff"
+          d="M 1125.628906 104.621094 C 1161.617188 104.621094 1190.78125 133.785156 1190.78125 169.773438 L 1190.78125 349.558594 C 1190.78125 385.546875 1161.617188 414.710938 1125.628906 414.710938 C 1089.644531 414.710938 1060.476563 385.546875 1060.476563 349.558594 L 1060.476563 169.773438 C 1060.476563 133.785156 1089.644531 104.621094 1125.628906 104.621094 Z M 1125.628906 104.621094"
+        />
+        <path 
+          fill="#ffffff"
+          d="M 313.714844 104.621094 C 349.703125 104.621094 378.867188 133.785156 378.867188 169.773438 L 378.867188 349.558594 C 378.867188 385.546875 349.703125 414.710938 313.714844 414.710938 C 277.730469 414.710938 248.5625 385.546875 248.5625 349.558594 L 248.5625 169.773438 C 248.5625 133.785156 277.730469 104.621094 313.714844 104.621094 Z M 313.714844 104.621094"
+        />
+        
+        {/* Eyes - white circles with gradient pupils */}
+        <circle cx="490" cy="320" r="90" fill="#ffffff" />
+        <circle cx="950" cy="320" r="90" fill="#ffffff" />
+        
+        {/* Pupils with gradient */}
+        <defs>
+          <linearGradient id="pupilGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#1E3A8A" />
+            <stop offset="100%" stopColor="#0F172A" />
+          </linearGradient>
+        </defs>
+        <circle cx="500" cy="310" r="45" fill="url(#pupilGradient)" />
+        <circle cx="960" cy="310" r="45" fill="url(#pupilGradient)" />
+        
+        {/* Eye highlights */}
+        <circle cx="480" cy="290" r="15" fill="#ffffff" opacity="0.9" />
+        <circle cx="940" cy="290" r="15" fill="#ffffff" opacity="0.9" />
+        
+        {/* Smile */}
+        <path 
+          d="M 580 480 Q 720 580 860 480" 
+          stroke="#ffffff" 
+          strokeWidth="25" 
+          fill="none" 
+          strokeLinecap="round"
+        />
+        
+        {/* Cheek blush */}
+        <circle cx="380" cy="420" r="35" fill="#ffffff" opacity="0.3" />
+        <circle cx="1060" cy="420" r="35" fill="#ffffff" opacity="0.3" />
         
         {/* Sparkles for celebrating mood */}
         {mood === "celebrating" && (
           <>
             <g className="animate-pulse">
               <path 
-                d="M15 20 L17 24 L21 24 L18 27 L19 31 L15 28 L11 31 L12 27 L9 24 L13 24 Z" 
-                fill="var(--velio-gold)"
+                d="M 200 150 L 210 170 L 230 170 L 215 185 L 220 205 L 200 190 L 180 205 L 185 185 L 170 170 L 190 170 Z" 
+                fill="#F59E0B"
               />
             </g>
             <g className="animate-pulse" style={{ animationDelay: "0.3s" }}>
               <path 
-                d="M85 25 L86 28 L89 28 L87 30 L88 33 L85 31 L82 33 L83 30 L81 28 L84 28 Z" 
-                fill="var(--velio-gold)"
-              />
-            </g>
-            <g className="animate-pulse" style={{ animationDelay: "0.6s" }}>
-              <path 
-                d="M80 70 L81 72 L83 72 L82 74 L82 76 L80 75 L78 76 L78 74 L77 72 L79 72 Z" 
-                fill="var(--velio-gold)"
+                d="M 1230 200 L 1240 220 L 1260 220 L 1245 235 L 1250 255 L 1230 240 L 1210 255 L 1215 235 L 1200 220 L 1220 220 Z" 
+                fill="#F59E0B"
               />
             </g>
           </>

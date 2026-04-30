@@ -35,6 +35,7 @@ const knowledgeBase: Record<string, string> = {
   "emergencia": "Los vehículos de emergencia (ambulancias, bomberos, policía) con sirenas y luces encendidas tienen PRIORIDAD ABSOLUTA. Cuando los escuches, orílate a la derecha y detente hasta que pasen. ¡Tu colaboración puede salvar una vida!",
   "punto ciego": "El PUNTO CIEGO es esa zona alrededor de tu vehículo que los espejos no logran cubrir. Para reducir el riesgo: ajusta bien todos tus espejos y, antes de cambiar de carril, gira la cabeza para revisar ese ángulo. ¡Un movimiento de cabeza de un segundo puede salvarte de un accidente enorme!",
   "celular": "Usar el celular al manejar sin manos libres está PROHIBIDO. Es una de las principales causas de accidentes. La multa es alta y, más importante, distrae tu atención cuando más la necesitas. Si es urgente, estaciona en un lugar seguro y luego haz tu llamada.",
+  "contraseña": "¿Preguntaste sobre contraseña? Parece que te confundiste de app. Pero si quieres aprender sobre señales de tránsito o normas de manejo, ¡aquí estoy para ayudarte!",
 }
 
 const NO_ENTENDIDO = "No estoy seguro de haber entendido eso. ¿Podrías decirlo de otra forma? También puedo ayudarte con señales, normas, prioridad de paso o seguridad vial."
@@ -119,9 +120,9 @@ export function ChatbotScreen() {
   }
 
   return (
-    <div className="flex flex-col h-[calc(100vh-6rem)] max-w-lg mx-auto">
+    <div className="flex flex-col h-[calc(100vh-6rem)] max-w-lg mx-auto lg:max-w-3xl">
       {/* Header */}
-      <div className="sticky top-0 z-10 px-5 py-4 bg-background/80 backdrop-blur-xl border-b border-border/50">
+      <div className="sticky top-0 z-10 px-4 py-4 bg-background/80 backdrop-blur-xl border-b border-border/50">
         <div className="flex items-center gap-4">
           <VelioMascot size="md" mood="happy" />
           <div className="flex-1">
@@ -135,7 +136,7 @@ export function ChatbotScreen() {
       </div>
 
       {/* Messages Area */}
-      <div className="flex-1 overflow-y-auto px-5 py-4 space-y-4 scrollbar-hide">
+      <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4 scrollbar-hide">
         {messages.map((message, index) => (
           <div
             key={message.id}
@@ -150,7 +151,7 @@ export function ChatbotScreen() {
             )}
             <div
               className={cn(
-                "max-w-[80%] rounded-2xl px-4 py-3 shadow-soft",
+                "max-w-[80%] lg:max-w-[70%] rounded-2xl px-4 py-3 shadow-soft",
                 message.sender === "user"
                   ? "bg-primary text-primary-foreground rounded-br-md"
                   : "bg-card border border-border/50 rounded-bl-md"
@@ -186,7 +187,7 @@ export function ChatbotScreen() {
 
       {/* Quick Questions */}
       {messages.length <= 2 && (
-        <div className="px-5 pb-3">
+        <div className="px-4 pb-3">
           <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Preguntas sugeridas</span>
@@ -206,7 +207,7 @@ export function ChatbotScreen() {
       )}
 
       {/* Input Area */}
-      <div className="sticky bottom-0 px-5 py-4 bg-background/80 backdrop-blur-xl border-t border-border/50">
+      <div className="sticky bottom-0 px-4 py-4 bg-background/80 backdrop-blur-xl border-t border-border/50">
         <form onSubmit={handleSubmit} className="flex gap-3">
           <div className="flex-1 relative">
             <Input

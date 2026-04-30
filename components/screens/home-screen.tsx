@@ -81,7 +81,7 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
   const lessonsPercent = (userData.completedLessons / userData.totalLessons) * 100
 
   return (
-    <div className="px-5 py-6 space-y-6 max-w-lg mx-auto">
+    <div className="px-4 py-6 space-y-6 max-w-lg mx-auto lg:max-w-6xl">
       {/* Hero Section */}
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary/90 to-accent/90 p-6 text-primary-foreground shadow-soft-lg">
         {/* Background pattern */}
@@ -90,7 +90,7 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
           <div className="absolute bottom-0 left-0 w-32 h-32 rounded-full bg-white blur-2xl" />
         </div>
         
-        <div className="relative flex items-start justify-between">
+        <div className="relative flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
           <div className="space-y-2">
             <p className="text-primary-foreground/80 text-sm font-medium">
               Bienvenido de vuelta
@@ -133,199 +133,219 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
         </div>
       </div>
 
-      {/* Progress Overview */}
-      <Card className="shadow-soft border-0 bg-card/80 backdrop-blur-sm">
-        <CardContent className="p-5 space-y-5">
-          <div className="flex items-center justify-between">
+      {/* Main Grid Layout */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Progress Overview */}
+        <Card className="shadow-soft border-0 bg-card/80 backdrop-blur-sm">
+          <CardContent className="p-5 space-y-5">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                  <Target className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-foreground">Tu Progreso</h3>
+                  <p className="text-xs text-muted-foreground">Esta semana</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-1 text-velio-success text-sm font-medium">
+                <TrendingUp className="w-4 h-4" />
+                +12%
+              </div>
+            </div>
+            
+            <div className="space-y-4">
+              <div>
+                <div className="flex justify-between text-sm mb-2">
+                  <span className="text-muted-foreground">Experiencia</span>
+                  <span className="font-medium text-foreground">{userData.xp} / {userData.xpToNext} XP</span>
+                </div>
+                <div className="relative">
+                  <Progress value={progressPercent} className="h-2.5" />
+                  <div 
+                    className="absolute top-0 h-2.5 bg-primary/20 rounded-full animate-pulse"
+                    style={{ width: `${progressPercent}%` }}
+                  />
+                </div>
+              </div>
+              
+              <div>
+                <div className="flex justify-between text-sm mb-2">
+                  <span className="text-muted-foreground">Lecciones</span>
+                  <span className="font-medium text-foreground">{userData.completedLessons} / {userData.totalLessons}</span>
+                </div>
+                <Progress value={lessonsPercent} className="h-2.5" />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Quick Actions */}
+        <div className="flex flex-col gap-4">
+          <div className="grid grid-cols-2 gap-3">
+            <Button 
+              className="h-auto py-5 rounded-2xl flex-col gap-2 bg-primary hover:bg-primary/90 shadow-soft" 
+              onClick={() => onNavigate("learning")}
+            >
+              <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center">
+                <Flame className="w-5 h-5" />
+              </div>
+              <span className="font-semibold">Reto Diario</span>
+            </Button>
+            <Button 
+              variant="outline" 
+              className="h-auto py-5 rounded-2xl flex-col gap-2 border-2 hover:bg-secondary/50 shadow-soft"
+              onClick={() => onNavigate("quiz")}
+            >
+              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                <BookOpen className="w-5 h-5 text-primary" />
+              </div>
+              <span className="font-semibold">Practicar Quiz</span>
+            </Button>
+          </div>
+          
+          {/* Velio CTA */}
+          <Button 
+            variant="outline" 
+            className="h-auto py-4 rounded-2xl border-2 hover:bg-secondary/50 shadow-soft flex items-center justify-between gap-4 px-5"
+            onClick={() => onNavigate("chatbot")}
+          >
             <div className="flex items-center gap-3">
+              <VelioMascot size="sm" mood="happy" />
+              <div className="text-left">
+                <p className="font-semibold">Pregúntale a Velio</p>
+                <p className="text-xs text-muted-foreground">Tu asistente de manejo</p>
+              </div>
+            </div>
+            <ChevronRight className="w-5 h-5 text-muted-foreground" />
+          </Button>
+        </div>
+
+        {/* Mastered Topics */}
+        <Card className="shadow-soft border-0 bg-card/80 backdrop-blur-sm">
+          <CardContent className="p-5">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 rounded-xl bg-velio-gold/10 flex items-center justify-center">
+                <Trophy className="w-5 h-5 text-velio-gold" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-foreground">Temas Dominados</h3>
+                <p className="text-xs text-muted-foreground">Excelente trabajo</p>
+              </div>
+            </div>
+            
+            <div className="space-y-3">
+              {masteredTopics.map((topic, index) => {
+                const Icon = topic.icon
+                return (
+                  <div 
+                    key={topic.id} 
+                    className="flex items-center gap-3 animate-slide-up"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <div className="w-9 h-9 rounded-xl bg-velio-success/10 flex items-center justify-center">
+                      <Icon className="w-4 h-4 text-velio-success" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="font-medium text-sm text-foreground">{topic.name}</p>
+                      <Progress value={topic.progress} className="h-1.5 mt-1" />
+                    </div>
+                    <span className="text-sm font-semibold text-velio-success">
+                      {topic.progress}%
+                    </span>
+                  </div>
+                )
+              })}
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Topics to Improve */}
+        <Card className="shadow-soft border-0 bg-card/80 backdrop-blur-sm">
+          <CardContent className="p-5">
+            <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
                 <Target className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <h3 className="font-semibold text-foreground">Tu Progreso</h3>
-                <p className="text-xs text-muted-foreground">Esta semana</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-1 text-velio-success text-sm font-medium">
-              <TrendingUp className="w-4 h-4" />
-              +12%
-            </div>
-          </div>
-          
-          <div className="space-y-4">
-            <div>
-              <div className="flex justify-between text-sm mb-2">
-                <span className="text-muted-foreground">Experiencia</span>
-                <span className="font-medium text-foreground">{userData.xp} / {userData.xpToNext} XP</span>
-              </div>
-              <div className="relative">
-                <Progress value={progressPercent} className="h-2.5" />
-                <div 
-                  className="absolute top-0 h-2.5 bg-primary/20 rounded-full animate-pulse"
-                  style={{ width: `${progressPercent}%` }}
-                />
+                <h3 className="font-semibold text-foreground">Por Mejorar</h3>
+                <p className="text-xs text-muted-foreground">Enfócate en estos temas</p>
               </div>
             </div>
             
-            <div>
-              <div className="flex justify-between text-sm mb-2">
-                <span className="text-muted-foreground">Lecciones</span>
-                <span className="font-medium text-foreground">{userData.completedLessons} / {userData.totalLessons}</span>
+            <div className="space-y-3">
+              {topicsToImprove.map((topic, index) => {
+                const Icon = topic.icon
+                return (
+                  <div 
+                    key={topic.id} 
+                    className="flex items-center gap-3 animate-slide-up"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <Icon className="w-4 h-4 text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="font-medium text-sm text-foreground">{topic.name}</p>
+                      <Progress value={topic.progress} className="h-1.5 mt-1" />
+                    </div>
+                    <span className="text-sm font-medium text-muted-foreground">
+                      {topic.progress}%
+                    </span>
+                  </div>
+                )
+              })}
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Recommendations - Full width on desktop */}
+        <Card className="shadow-soft border-0 bg-card/80 backdrop-blur-sm lg:col-span-2">
+          <CardContent className="p-5">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 rounded-xl bg-velio-gold/10 flex items-center justify-center">
+                <Sparkles className="w-5 h-5 text-velio-gold" />
               </div>
-              <Progress value={lessonsPercent} className="h-2.5" />
+              <div>
+                <h3 className="font-semibold text-foreground">Recomendado para Ti</h3>
+                <p className="text-xs text-muted-foreground">Sugerencias personalizadas</p>
+              </div>
             </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Quick Actions */}
-      <div className="grid grid-cols-2 gap-3">
-        <Button 
-          className="h-auto py-5 rounded-2xl flex-col gap-2 bg-primary hover:bg-primary/90 shadow-soft" 
-          onClick={() => onNavigate("learning")}
-        >
-          <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center">
-            <Flame className="w-5 h-5" />
-          </div>
-          <span className="font-semibold">Reto Diario</span>
-        </Button>
-        <Button 
-          variant="outline" 
-          className="h-auto py-5 rounded-2xl flex-col gap-2 border-2 hover:bg-secondary/50 shadow-soft"
-          onClick={() => onNavigate("quiz")}
-        >
-          <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-            <BookOpen className="w-5 h-5 text-primary" />
-          </div>
-          <span className="font-semibold">Practicar Quiz</span>
-        </Button>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              {recommendations.map((rec, index) => {
+                const Icon = rec.icon
+                return (
+                  <button
+                    key={rec.id}
+                    className={cn(
+                      "w-full p-4 rounded-2xl flex flex-col sm:items-center gap-3 text-left sm:text-center transition-all duration-200",
+                      "hover:bg-secondary/50 active:scale-[0.98] bg-secondary/30",
+                      "animate-slide-up"
+                    )}
+                    style={{ animationDelay: `${index * 100}ms` }}
+                    onClick={() => onNavigate(rec.action as ScreenType)}
+                  >
+                    <div className={cn(
+                      "w-12 h-12 rounded-xl flex items-center justify-center",
+                      rec.color === "accent" ? "bg-accent/10" : "bg-primary/10"
+                    )}>
+                      <Icon className={cn(
+                        "w-6 h-6",
+                        rec.color === "accent" ? "text-accent" : "text-primary"
+                      )} />
+                    </div>
+                    <div>
+                      <p className="font-medium text-sm text-foreground">{rec.title}</p>
+                      <p className="text-xs text-muted-foreground mt-1">{rec.description}</p>
+                    </div>
+                  </button>
+                )
+              })}
+            </div>
+          </CardContent>
+        </Card>
       </div>
-
-      {/* Mastered Topics */}
-      <Card className="shadow-soft border-0 bg-card/80 backdrop-blur-sm">
-        <CardContent className="p-5">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-xl bg-velio-gold/10 flex items-center justify-center">
-              <Trophy className="w-5 h-5 text-velio-gold" />
-            </div>
-            <div>
-              <h3 className="font-semibold text-foreground">Temas Dominados</h3>
-              <p className="text-xs text-muted-foreground">Excelente trabajo</p>
-            </div>
-          </div>
-          
-          <div className="space-y-3">
-            {masteredTopics.map((topic, index) => {
-              const Icon = topic.icon
-              return (
-                <div 
-                  key={topic.id} 
-                  className="flex items-center gap-3 animate-slide-up"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <div className="w-9 h-9 rounded-xl bg-velio-success/10 flex items-center justify-center">
-                    <Icon className="w-4 h-4 text-velio-success" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="font-medium text-sm text-foreground">{topic.name}</p>
-                    <Progress value={topic.progress} className="h-1.5 mt-1" />
-                  </div>
-                  <span className="text-sm font-semibold text-velio-success">
-                    {topic.progress}%
-                  </span>
-                </div>
-              )
-            })}
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Topics to Improve */}
-      <Card className="shadow-soft border-0 bg-card/80 backdrop-blur-sm">
-        <CardContent className="p-5">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-              <Target className="w-5 h-5 text-primary" />
-            </div>
-            <div>
-              <h3 className="font-semibold text-foreground">Por Mejorar</h3>
-              <p className="text-xs text-muted-foreground">Enfócate en estos temas</p>
-            </div>
-          </div>
-          
-          <div className="space-y-3">
-            {topicsToImprove.map((topic, index) => {
-              const Icon = topic.icon
-              return (
-                <div 
-                  key={topic.id} 
-                  className="flex items-center gap-3 animate-slide-up"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <Icon className="w-4 h-4 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="font-medium text-sm text-foreground">{topic.name}</p>
-                    <Progress value={topic.progress} className="h-1.5 mt-1" />
-                  </div>
-                  <span className="text-sm font-medium text-muted-foreground">
-                    {topic.progress}%
-                  </span>
-                </div>
-              )
-            })}
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Recommendations */}
-      <Card className="shadow-soft border-0 bg-card/80 backdrop-blur-sm">
-        <CardContent className="p-5">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-xl bg-velio-gold/10 flex items-center justify-center">
-              <Sparkles className="w-5 h-5 text-velio-gold" />
-            </div>
-            <div>
-              <h3 className="font-semibold text-foreground">Recomendado para Ti</h3>
-              <p className="text-xs text-muted-foreground">Sugerencias personalizadas</p>
-            </div>
-          </div>
-          
-          <div className="space-y-2">
-            {recommendations.map((rec, index) => {
-              const Icon = rec.icon
-              return (
-                <button
-                  key={rec.id}
-                  className={cn(
-                    "w-full p-4 rounded-2xl flex items-center gap-3 text-left transition-all duration-200",
-                    "hover:bg-secondary/50 active:scale-[0.98]",
-                    "animate-slide-up"
-                  )}
-                  style={{ animationDelay: `${index * 100}ms` }}
-                  onClick={() => onNavigate(rec.action as ScreenType)}
-                >
-                  <div className={cn(
-                    "w-10 h-10 rounded-xl flex items-center justify-center",
-                    rec.color === "accent" ? "bg-accent/10" : "bg-primary/10"
-                  )}>
-                    <Icon className={cn(
-                      "w-5 h-5",
-                      rec.color === "accent" ? "text-accent" : "text-primary"
-                    )} />
-                  </div>
-                  <div className="flex-1">
-                    <p className="font-medium text-sm text-foreground">{rec.title}</p>
-                    <p className="text-xs text-muted-foreground">{rec.description}</p>
-                  </div>
-                  <ChevronRight className="w-5 h-5 text-muted-foreground" />
-                </button>
-              )
-            })}
-          </div>
-        </CardContent>
-      </Card>
     </div>
   )
 }

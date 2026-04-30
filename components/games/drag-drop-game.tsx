@@ -136,7 +136,7 @@ export function DragDropGame({ onBack, onCorrect }: DragDropGameProps) {
   }
 
   return (
-    <div className="px-5 py-6 space-y-5 max-w-lg mx-auto">
+    <div className="px-4 py-6 space-y-5 max-w-lg mx-auto lg:max-w-3xl">
       {/* Header */}
       <div className="flex items-center gap-4">
         <Button variant="ghost" size="icon" className="rounded-xl" onClick={onBack}>

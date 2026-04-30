@@ -236,14 +236,16 @@ export function QuizScreen() {
 
   if (state === "menu") {
     return (
-      <div className="px-5 py-6 space-y-6 max-w-lg mx-auto">
+      <div className="px-4 py-6 space-y-6 max-w-lg mx-auto lg:max-w-6xl">
         {/* Header */}
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl font-bold text-foreground">Quiz</h1>
-            <p className="text-muted-foreground text-sm">Pon a prueba tus conocimientos</p>
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div className="flex items-center gap-4">
+            <VelioMascot size="md" mood="encouraging" />
+            <div>
+              <h1 className="text-2xl font-bold text-foreground">Quiz</h1>
+              <p className="text-muted-foreground text-sm">Pon a prueba tus conocimientos</p>
+            </div>
           </div>
-          <VelioMascot size="md" mood="encouraging" />
         </div>
 
         {/* Stats */}
@@ -267,7 +269,7 @@ export function QuizScreen() {
           </CardContent>
         </Card>
 
-        {/* Categories */}
+        {/* Categories - Grid on desktop */}
         <Card className="border-0 shadow-soft bg-card/80 backdrop-blur-sm">
           <CardContent className="p-5">
             <div className="flex items-center gap-3 mb-4">
@@ -280,7 +282,7 @@ export function QuizScreen() {
               </div>
             </div>
             
-            <div className="space-y-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {categories.map((category) => {
                 const Icon = category.icon
                 return (
@@ -290,7 +292,7 @@ export function QuizScreen() {
                     onClick={() => startQuiz(category.id)}
                   >
                     <div className={cn(
-                      "w-12 h-12 rounded-xl flex items-center justify-center",
+                      "w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0",
                       category.color === "primary" && "bg-primary/10",
                       category.color === "accent" && "bg-accent/10",
                       category.color === "velio-gold" && "bg-velio-gold/10"
@@ -302,11 +304,11 @@ export function QuizScreen() {
                         category.color === "velio-gold" && "text-velio-gold"
                       )} />
                     </div>
-                    <div className="flex-1">
-                      <p className="font-semibold text-foreground">{category.name}</p>
+                    <div className="flex-1 min-w-0">
+                      <p className="font-semibold text-foreground truncate">{category.name}</p>
                       <p className="text-sm text-muted-foreground">{category.questionCount} preguntas</p>
                     </div>
-                    <ArrowRight className="w-5 h-5 text-muted-foreground" />
+                    <ArrowRight className="w-5 h-5 text-muted-foreground flex-shrink-0" />
                   </button>
                 )
               })}
@@ -338,7 +340,7 @@ export function QuizScreen() {
     const passed = percentage >= 70
 
     return (
-      <div className="px-5 py-6 space-y-6 max-w-lg mx-auto">
+      <div className="px-4 py-6 space-y-6 max-w-lg mx-auto lg:max-w-2xl">
         <Card className="border-2 border-velio-gold/30 shadow-soft-lg overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-velio-gold/5 to-transparent" />
           <CardContent className="relative p-8 text-center space-y-5">
@@ -417,7 +419,7 @@ export function QuizScreen() {
   }
 
   return (
-    <div className="px-5 py-6 space-y-5 max-w-lg mx-auto">
+    <div className="px-4 py-6 space-y-5 max-w-lg mx-auto lg:max-w-2xl">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>

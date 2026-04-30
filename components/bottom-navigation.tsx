@@ -1,6 +1,6 @@
 "use client"
 
-import { Home, Gamepad2, MessageCircle, Camera, ClipboardList } from "lucide-react"
+import { Home, Gamepad2, MessageCircle, Eye, ClipboardList } from "lucide-react"
 import type { ScreenType } from "@/app/page"
 import { cn } from "@/lib/utils"
 
@@ -13,7 +13,7 @@ const navItems: { id: ScreenType; icon: React.ElementType; label: string }[] = [
   { id: "home", icon: Home, label: "Inicio" },
   { id: "learning", icon: Gamepad2, label: "Aprender" },
   { id: "chatbot", icon: MessageCircle, label: "Velio" },
-  { id: "signals", icon: Camera, label: "Señales" },
+  { id: "signals", icon: Eye, label: "Señales" },
   { id: "quiz", icon: ClipboardList, label: "Quiz" },
 ]
 
@@ -23,7 +23,7 @@ export function BottomNavigation({ activeScreen, onNavigate }: BottomNavigationP
       {/* Gradient blur backdrop */}
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/95 to-background/0 backdrop-blur-xl" />
       
-      <div className="relative max-w-lg mx-auto px-2 pb-safe">
+      <div className="relative max-w-lg mx-auto lg:max-w-6xl px-2 pb-safe">
         <div className="flex items-center justify-around py-2">
           {navItems.map((item) => {
             const Icon = item.icon

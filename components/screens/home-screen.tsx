@@ -96,7 +96,7 @@ export function HomeScreen({ onNavigate }: HomeScreenProps) {
               Bienvenido de vuelta
             </p>
             <h1 className="text-2xl font-bold">
-              Hola, {userData.name}
+              ¡Hola! Soy Velio, tu asistente virtual
             </h1>
             <p className="text-primary-foreground/80 text-sm">
               Sigamos aprendiendo juntos

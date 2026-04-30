@@ -10,10 +10,10 @@ interface VelioMascotProps {
 }
 
 const sizeClasses = {
-  sm: "w-10 h-10",
-  md: "w-14 h-14",
-  lg: "w-20 h-20",
-  xl: "w-28 h-28",
+  sm: "w-12 h-12",
+  md: "w-24 h-24",
+  lg: "w-32 h-32",
+  xl: "w-40 h-40",
 }
 
 export function VelioMascot({ 
@@ -34,91 +34,100 @@ export function VelioMascot({
     >
       <svg 
         xmlns="http://www.w3.org/2000/svg" 
-        viewBox="0 0 1440 810" 
+        viewBox="0 0 200 240" 
         className="w-full h-full drop-shadow-lg"
         preserveAspectRatio="xMidYMid meet"
       >
         <defs>
-          <clipPath id="velioClip">
-            <path d="M 248.5625 144.621094 C 248.5625 122.550781 266.492188 104.621094 288.5625 104.621094 L 1150.78125 104.621094 C 1172.847656 104.621094 1190.78125 122.550781 1190.78125 144.621094 L 1190.78125 652.59375 C 1190.78125 674.660156 1172.847656 692.59375 1150.78125 692.59375 L 288.5625 692.59375 C 266.492188 692.59375 248.5625 674.660156 248.5625 652.59375 Z M 248.5625 144.621094" />
-          </clipPath>
-        </defs>
-        
-        {/* Background gradient */}
-        <g clipPath="url(#velioClip)">
-          <rect x="248" y="104" width="943" height="589" fill="url(#velioBodyGradient)" />
-        </g>
-        
-        <defs>
-          <linearGradient id="velioBodyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <linearGradient id="robotGradient" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="#3B82F6" />
-            <stop offset="100%" stopColor="#14B8A6" />
+            <stop offset="100%" stopColor="#1E40AF" />
           </linearGradient>
+          <filter id="shadow">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" floodOpacity="0.2" />
+          </filter>
         </defs>
-        
-        {/* Main rounded rectangle body */}
+
+        {/* Head */}
+        <rect x="50" y="20" width="100" height="80" rx="8" fill="url(#robotGradient)" filter="url(#shadow)" />
+
+        {/* Left antenna */}
+        <line x1="70" y1="20" x2="60" y2="0" stroke="#1E40AF" strokeWidth="4" strokeLinecap="round" />
+        <circle cx="60" cy="0" r="5" fill="#1E40AF" />
+
+        {/* Right antenna */}
+        <line x1="130" y1="20" x2="140" y2="0" stroke="#1E40AF" strokeWidth="4" strokeLinecap="round" />
+        <circle cx="140" cy="0" r="5" fill="#1E40AF" />
+
+        {/* Left eye */}
+        <circle cx="75" cy="45" r="12" fill="#FFFFFF" />
+        <circle cx="75" cy="45" r="8" fill="#0F172A" />
+        <circle cx="77" cy="43" r="3" fill="#FFFFFF" />
+
+        {/* Right eye */}
+        <circle cx="125" cy="45" r="12" fill="#FFFFFF" />
+        <circle cx="125" cy="45" r="8" fill="#0F172A" />
+        <circle cx="127" cy="43" r="3" fill="#FFFFFF" />
+
+        {/* Mouth */}
         <path 
-          fill="url(#velioBodyGradient)"
-          d="M 248.5625 144.621094 C 248.5625 122.550781 266.492188 104.621094 288.5625 104.621094 L 1150.78125 104.621094 C 1172.847656 104.621094 1190.78125 122.550781 1190.78125 144.621094 L 1190.78125 652.59375 C 1190.78125 674.660156 1172.847656 692.59375 1150.78125 692.59375 L 288.5625 692.59375 C 266.492188 692.59375 248.5625 674.660156 248.5625 652.59375 Z M 248.5625 144.621094"
-        />
-        
-        {/* White decorative elements */}
-        <path 
-          fill="#ffffff"
-          d="M 1125.628906 104.621094 C 1161.617188 104.621094 1190.78125 133.785156 1190.78125 169.773438 L 1190.78125 349.558594 C 1190.78125 385.546875 1161.617188 414.710938 1125.628906 414.710938 C 1089.644531 414.710938 1060.476563 385.546875 1060.476563 349.558594 L 1060.476563 169.773438 C 1060.476563 133.785156 1089.644531 104.621094 1125.628906 104.621094 Z M 1125.628906 104.621094"
-        />
-        <path 
-          fill="#ffffff"
-          d="M 313.714844 104.621094 C 349.703125 104.621094 378.867188 133.785156 378.867188 169.773438 L 378.867188 349.558594 C 378.867188 385.546875 349.703125 414.710938 313.714844 414.710938 C 277.730469 414.710938 248.5625 385.546875 248.5625 349.558594 L 248.5625 169.773438 C 248.5625 133.785156 277.730469 104.621094 313.714844 104.621094 Z M 313.714844 104.621094"
-        />
-        
-        {/* Eyes - white circles with gradient pupils */}
-        <circle cx="490" cy="320" r="90" fill="#ffffff" />
-        <circle cx="950" cy="320" r="90" fill="#ffffff" />
-        
-        {/* Pupils with gradient */}
-        <defs>
-          <linearGradient id="pupilGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#1E3A8A" />
-            <stop offset="100%" stopColor="#0F172A" />
-          </linearGradient>
-        </defs>
-        <circle cx="500" cy="310" r="45" fill="url(#pupilGradient)" />
-        <circle cx="960" cy="310" r="45" fill="url(#pupilGradient)" />
-        
-        {/* Eye highlights */}
-        <circle cx="480" cy="290" r="15" fill="#ffffff" opacity="0.9" />
-        <circle cx="940" cy="290" r="15" fill="#ffffff" opacity="0.9" />
-        
-        {/* Smile */}
-        <path 
-          d="M 580 480 Q 720 580 860 480" 
-          stroke="#ffffff" 
-          strokeWidth="25" 
+          d="M 80 70 Q 100 80 120 70" 
+          stroke="#1E40AF" 
+          strokeWidth="2.5" 
           fill="none" 
           strokeLinecap="round"
+          className={animated && mood === "happy" ? "animate-bounce" : ""}
         />
-        
-        {/* Cheek blush */}
-        <circle cx="380" cy="420" r="35" fill="#ffffff" opacity="0.3" />
-        <circle cx="1060" cy="420" r="35" fill="#ffffff" opacity="0.3" />
-        
-        {/* Sparkles for celebrating mood */}
-        {mood === "celebrating" && (
-          <>
-            <g className="animate-pulse">
-              <path 
-                d="M 200 150 L 210 170 L 230 170 L 215 185 L 220 205 L 200 190 L 180 205 L 185 185 L 170 170 L 190 170 Z" 
-                fill="#F59E0B"
-              />
-            </g>
-            <g className="animate-pulse" style={{ animationDelay: "0.3s" }}>
-              <path 
-                d="M 1230 200 L 1240 220 L 1260 220 L 1245 235 L 1250 255 L 1230 240 L 1210 255 L 1215 235 L 1200 220 L 1220 220 Z" 
-                fill="#F59E0B"
-              />
-            </g>
-          </>
+
+        {/* Body/Torso */}
+        <rect x="40" y="105" width="120" height="90" rx="6" fill="url(#robotGradient)" filter="url(#shadow)" />
+
+        {/* Chest panel */}
+        <rect x="60" y="115" width="80" height="70" rx="4" fill="#0EA5E9" opacity="0.8" />
+
+        {/* Chest lights - top row */}
+        <circle cx="75" cy="130" r="4" fill="#FBBF24" opacity="0.9" />
+        <circle cx="100" cy="130" r="4" fill="#34D399" opacity="0.9" />
+        <circle cx="125" cy="130" r="4" fill="#F87171" opacity="0.9" />
+
+        {/* Chest lights - bottom row */}
+        <circle cx="75" cy="160" r="4" fill="#34D399" opacity="0.9" />
+        <circle cx="100" cy="160" r="4" fill="#F87171" opacity="0.9" />
+        <circle cx="125" cy="160" r="4" fill="#FBBF24" opacity="0.9" />
+
+        {/* Left arm */}
+        <g>
+          <rect x="15" y="135" width="25" height="18" rx="9" fill="url(#robotGradient)" filter="url(#shadow)" />
+          <circle cx="18" cy="144" r="6" fill="#1E40AF" />
+          <circle cx="37" cy="144" r="6" fill="#1E40AF" />
+        </g>
+
+        {/* Right arm */}
+        <g>
+          <rect x="160" y="135" width="25" height="18" rx="9" fill="url(#robotGradient)" filter="url(#shadow)" />
+          <circle cx="163" cy="144" r="6" fill="#1E40AF" />
+          <circle cx="182" cy="144" r="6" fill="#1E40AF" />
+        </g>
+
+        {/* Left leg */}
+        <g>
+          <rect x="65" y="198" width="18" height="35" rx="9" fill="url(#robotGradient)" filter="url(#shadow)" />
+          <rect x="58" y="230" width="32" height="8" rx="4" fill="#1E40AF" />
+        </g>
+
+        {/* Right leg */}
+        <g>
+          <rect x="117" y="198" width="18" height="35" rx="9" fill="url(#robotGradient)" filter="url(#shadow)" />
+          <rect x="110" y="230" width="32" height="8" rx="4" fill="#1E40AF" />
+        </g>
+
+        {/* Thinking sparkle for thinking mood */}
+        {mood === "thinking" && (
+          <g className="animate-pulse">
+            <circle cx="160" cy="30" r="2" fill="#F59E0B" />
+            <circle cx="170" cy="25" r="2.5" fill="#F59E0B" />
+            <circle cx="175" cy="35" r="2" fill="#F59E0B" />
+          </g>
         )}
       </svg>
     </div>
